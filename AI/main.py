@@ -25,7 +25,7 @@ def addanswer(questions:list,answers:list,question:str,answer:str):
 def main():
     dic = ec.get_default_language()
     questions =['Hi','Hello','Bye',"Close","Exit","Who are you"]
-    answers =["Hi","Hi","GoodBye","GoodBye","GoodBye",f'I\'m {NAME} V{VERSION} I\'d Created By {DEVELOPER}']
+    answers =["Hi","Hi","GoodBye","GoodBye","GoodBye",f'I\'m Your Chatbot {NAME} V.{VERSION} I\'d Created By {DEVELOPER}.']
     is_r =True
     while is_r:
         prompt = ask()
