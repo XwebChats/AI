@@ -5,7 +5,7 @@ NAME = 'Zane'
 VERSION = '0.0.1'
 DEVELOPER ='Eyad Hassan'
 def ask():
-    prompt = input("ask something....\n")
+    prompt = input("ask something....\nYou:")
     return prompt
 def getanswerindex(question:str,questions:list):
     Index = 0
@@ -24,19 +24,24 @@ def addanswer(questions:list,answers:list,question:str,answer:str):
 
 def main():
     dic = ec.get_default_language()
+    ch =ec.SpellChecker()
     questions =['Hi','Hello','Bye',"Close","Exit","Who are you"]
     answers =["Hi","Hi","GoodBye","GoodBye","GoodBye",f'I\'m Your Chatbot {NAME} V.{VERSION} I\'d Created By {DEVELOPER}.']
     is_r =True
     while is_r:
         prompt = ask()
         prompt = prompt.capitalize()
-        ind = getanswerindex(prompt,questions)
-        print(getanswer(ind,answers))
-        if prompt in questions[2:5]:
-            break
+        if prompt in questions:
+            ind = getanswerindex(prompt,questions)
+            print(f"Zain:{getanswer(ind,answers)}")
+            if prompt in questions[2:5]:
+                break
+            else:
+                continue
+        elif ch == True:
+            print(prompt)
         else:
-            continue
-    
+            print('I don\' Understand You!')
 
 
 if __name__ == '__main__':
