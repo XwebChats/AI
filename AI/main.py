@@ -38,7 +38,7 @@ def main():
                 break
             else:
                 continue
-        elif ch == True:
+        elif ch == True:#uncomplete
             print(prompt)
         else:
             print('I don\' Understand You!')
