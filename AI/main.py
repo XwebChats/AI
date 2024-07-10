@@ -1,5 +1,5 @@
 import enchant.checker as ec
-
+import pyspellchecker
 
 NAME = 'Zane'
 VERSION = '0.0.1'
