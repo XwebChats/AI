@@ -37,7 +37,6 @@ def main():
     answers =[]
     with open('questions.csv','r') as data:
         read =csv.reader(data,delimiter=',')
-        print(read)
     is_r =True
     while is_r:
         prompt = ask()
