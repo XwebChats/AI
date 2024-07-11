@@ -1,6 +1,7 @@
 from textblob import WordList,Word
 import string as st
 from funcs import *
+import csv
 
 NAME = 'Zane'
 VERSION = '0.0.1'
@@ -32,8 +33,11 @@ def addanswer(questions:list,answers:list,question:str,answer:str):
     return [questions,answers]
 
 def main():
-    questions =['Hi','Hello','Bye',"Close","Exit","Who are you"]
-    answers =["Hi","Hello","GoodBye","GoodBye","GoodBye",f'I\'m Your Chatbot {NAME} V.{VERSION} I\'d Created By {DEVELOPER}.']
+    questions =[]
+    answers =[]
+    with open('questions.csv','r') as data:
+        read =csv.reader(data,delimiter=',')
+        print(read)
     is_r =True
     while is_r:
         prompt = ask()
@@ -65,22 +69,36 @@ def main():
                         step = []
                         steps = int(input('how many steps: '))
                         for n in range(steps):
-                            prompt = int(input('step type :\n1.print\n2.input\nstep: '))
+                            prompt = int(input(f'step type :\n1.Print\n2.Input\n3.Variable\nStep {n+1}: '))
                             if prompt == 1 :
-                                prnt = input('what to print: ')
-                                step.append(f'  print(\'{prnt}\')\n')
+                                prnt = int(input('what print type you need:\n1.String\n2.F.String\n3.Custom\nType: '))
+                                if prnt == 1:
+                                    prnt = input('what to print: ')
+                                    step.append(f'  print(\'{prnt}\')\n')
+                                elif prnt == 2:
+                                    prnt = input('what to print: ')
+                                    step.append(f'  print(f\'{prnt}\')\n')
+                                elif prnt == 3:
+                                    prnt = input('what to print: ')
+                                    step.append(f'  print({prnt})\n')
+                                else:
+                                    print('bad Choose.')
                             elif prompt == 2 :
-                                prompt = int(input('inputing:\n1.integer\n2.string\ntype casting:'))
+                                prompt = int(input('inputing:\n1.Custom\n2.String\ntype casting:'))
                                 if prompt == 1:
                                     varn = input('variable name: ')
+                                    vart = input('variable Typecast: ')
                                     vari = input('what to type when inputting: ')
-                                    step.append(f'  {varn} = int(input(\'{vari}\'))\n')
-                                if prompt == 2:
+                                    step.append(f'  {varn} = {vart}(input(\'{vari}\'))\n')
+                                elif prompt == 2:
                                     varn = input('variable name: ')
                                     vari = input('what to type when inputting: ')
-                                    step.append(f'  {varn} = input(\'{vari}\')\n')
                                 else:
                                     print('bad choose.')
+                            elif prompt==3:
+                                varn = input('variable name: ')
+                                vard = input('variable data: ')
+                                step.append(f'  {varn} = {vard}\n')
                             else:
                                 print('bad choose.')
                         if len(args) >0:
@@ -90,9 +108,10 @@ def main():
                             
                         for z in range(len(step)):
                             func.append(step[z])
+                        #(f"{newQ}()")
                         fil.writelines(func)            
                 elif prompt == 2:
-                    pass
+                    answers.append(input(str(newQ) + str(' means? ')))
                 else:
                     print('bad choose.')
 
