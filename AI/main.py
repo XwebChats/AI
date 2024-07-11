@@ -1,5 +1,6 @@
 from textblob import WordList,Word
 import string as st
+from funcs import *
 
 NAME = 'Zane'
 VERSION = '0.0.1'
@@ -36,29 +37,7 @@ def main():
     is_r =True
     while is_r:
         prompt = ask()
-        promptstr = ''
-        promptsent = []
-        word = []
-        x = 0
-        if ' ' in prompt.strip():
-            for f in range(len(prompt)):
-                if prompt[f] == ' ':
-                    promptsent.append(promptstr)
-                    print(promptsent)
-                    x+= 1
-                    promptstr =''
-                    
-                else:
-                    prompstr = promptstr.join(prompt[f])
-                    word.append(promptstr)
-                    print(word)
-            ch =WordList(promptsent)
-            promptstr =''
-            print(promptsent)
-        else:
-            ch = Word(prompt)
-        prompt = ch.correct()
-        prompt = prompt.capitalize()
+        prompt = prompt.capitalize().strip()
         print(f"searching {prompt}")
         if prompt in questions:
             ind = getanswerindex(prompt,questions)
@@ -69,7 +48,55 @@ def main():
                 continue
         else:
             print('I don\' Understand You!')
+            newQ = prompt
+            prompt = input('will you teach me it?\nyou:')
+            prompt = prompt.strip().capitalize()
+            prompt = Word(prompt)
+            if prompt.correct() == 'Yes':
+                questions.append(newQ)
+                prompt = int(input(f"what does {newQ} mean:\n1.Function\n2.Question\nYou:"))
+                if prompt == 1:
+                    with open('funcs.py','a+') as fil:
+                        args = []
+                        t = int(input('How many args: '))
+                        for b in range(t):
+                            arg = input(f'arg {b}: ')
+                            args.append(arg)
+                        step = []
+                        steps = int(input('how many steps: '))
+                        for n in range(steps):
+                            prompt = int(input('step type :\n1.print\n2.input\nstep: '))
+                            if prompt == 1 :
+                                prnt = input('what to print: ')
+                                step.append(f'  print(\'{prnt}\')\n')
+                            elif prompt == 2 :
+                                prompt = int(input('inputing:\n1.integer\n2.string\ntype casting:'))
+                                if prompt == 1:
+                                    varn = input('variable name: ')
+                                    vari = input('what to type when inputting: ')
+                                    step.append(f'  {varn} = int(input(\'{vari}\'))\n')
+                                if prompt == 2:
+                                    varn = input('variable name: ')
+                                    vari = input('what to type when inputting: ')
+                                    step.append(f'  {varn} = input(\'{vari}\')\n')
+                                else:
+                                    print('bad choose.')
+                            else:
+                                print('bad choose.')
+                        if len(args) >0:
+                            func = [f'def {newQ}({args}):\n']
+                        else:
+                            func = [f'def {newQ}():\n']
+                            
+                        for z in range(len(step)):
+                            func.append(step[z])
+                        fil.writelines(func)            
+                elif prompt == 2:
+                    pass
+                else:
+                    print('bad choose.')
 
 
 if __name__ == '__main__':
     main()
+    Add()
