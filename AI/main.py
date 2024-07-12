@@ -109,6 +109,7 @@ def main():
                                     elif prompt == 2:
                                         varn = input('variable name: ')
                                         vari = input('what to type when inputting: ')
+                                        step.append(f'  {varn} = input(\'{vari}\')\n')
                                     else:
                                         print('bad choose.')
                                 elif prompt==3:
@@ -128,14 +129,12 @@ def main():
                             for z in range(len(step)):
                                 func.append(step[z])
                             fil.writelines(func)
-                            writer.writerow([newQ,f"{newQ}()"])            
+                            writer.writerow([newQ,f"{newQ}()"])
+                            Update()            
                     elif prompt == 2:
                         answers.append(input(str(newQ) + str(' means? ')))
                     else:
                         print('bad choose.')
-
-
-
 if __name__ == '__main__':
     main()
     

@@ -6,3 +6,7 @@ Exit,GoodBye
 Add,Add()
 Minus,Minus()
 Call,Call()
+Pip3,Pip3()
+Terminal,Terminal()
+Python3,Python3()
+Update,Update()
