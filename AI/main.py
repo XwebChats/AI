@@ -85,7 +85,7 @@ def main():
                             step = []
                             steps = int(input('how many steps: '))
                             for n in range(steps):
-                                prompt = int(input(f'step type :\n1.Print\n2.Input\n3.Variable\nStep {n+1}: '))
+                                prompt = int(input(f'step type :\n1.Print\n2.Input\n3.Variable\n4.Custom Code\nStep {n+1}: '))
                                 if prompt == 1 :
                                     prnt = int(input('what print type you need:\n1.String\n2.F.String\n3.Custom\nType: '))
                                     if prnt == 1:
@@ -115,6 +115,9 @@ def main():
                                     varn = input('variable name: ')
                                     vard = input('variable data: ')
                                     step.append(f'  {varn} = {vard}\n')
+                                elif prompt == 4:
+                                    code = input("write your own code: ")
+                                    step.append(f'  {code}\n')
                                 else:
                                     print('bad choose.')
                             if len(args) >0:
