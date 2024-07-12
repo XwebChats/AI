@@ -47,21 +47,24 @@ def main():
             for i in read:
                 questions.append(i[0])
                 answers.append(i[1])
-                print(questions[v],answers[v] ,sep=':')
                 v+=1
             prompt = ask()
             prompt = prompt.capitalize().strip()
-            print(f"searching {prompt}")
             if prompt in questions:
                 ind = getanswerindex(prompt,questions)
-                if '()' in getanswer(ind,answers):
-                    prompt.__format__("function")()
+                answer = getanswer(ind,answers)
+                if '()' in answer:
+                    eval(answer)
                 else:
                     print(f"Zain:{getanswer(ind,answers)}")
                 
                 if prompt in CLOSING:
+                    input('Press Enter To Continue....')
+                    os.system('clear')
                     break
                 else:
+                    input('Press Enter To Continue....')
+                    os.system('clear')
                     continue
             else:
                 print('I don\' Understand You!')
@@ -75,7 +78,7 @@ def main():
                     if prompt == 1:
                         with open('funcs.py','a+') as fil:
                             args = []
-                            t = int(input('How many args: '))
+                            t = 0
                             for b in range(t):
                                 arg = input(f'arg {b}: ')
                                 args.append(arg)
@@ -121,15 +124,13 @@ def main():
                                 
                             for z in range(len(step)):
                                 func.append(step[z])
-                            #(f"{newQ}()")
                             fil.writelines(func)
                             writer.writerow([newQ,f"{newQ}()"])            
                     elif prompt == 2:
                         answers.append(input(str(newQ) + str(' means? ')))
                     else:
                         print('bad choose.')
-    input('Press Enter To Continue....')
-    os.system('clear')
+
 
 
 if __name__ == '__main__':

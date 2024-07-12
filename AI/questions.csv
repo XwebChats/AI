@@ -4,3 +4,5 @@ Bye,GoodBye
 Close,GoodBye
 Exit,GoodBye
 Add,Add()
+Minus,Minus()
+Call,Call()
