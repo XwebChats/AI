@@ -13,7 +13,7 @@ def Pip3():
   os.system(f'pip3 install {lib}')
 def Terminal():
   import os
-  commandl = input('command: ')
+  commandl = input('command line: ')
   os.system(commandl)
 def Python3():
   import os
