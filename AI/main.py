@@ -4,12 +4,14 @@ from funcs import *
 import csv
 import os
 
-NAME = 'Zane'
+NAME = 'Zain'
 VERSION = '0.1.3'
 DEVELOPER ='Eyad Hassan'
 
 
 def ask():
+    sizec = int(os.get_terminal_size(0).columns / 2)
+    print('))~~~--##^${ZAIN}$^##--~~~(('.center(sizec))
     prompt = input("ask something....\nYou:")
     return prompt
 
