@@ -23,3 +23,8 @@ def Update():
   import os
   os.system('python3 upat.py')
   exit(0)
+def Flask():
+  import os
+  os.system('cd SRVR')
+  os.system('flask run')
+  os.system('cd ..')
