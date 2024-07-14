@@ -34,6 +34,7 @@ def addanswer(questions:list,answers:list,question:str,answer:str):
     return [questions,answers]
 
 def main():
+    upt = False
     os.system('clear')
     CLOSING = ["Bye","Close","Exit"]
     questions =["Who are you"]
@@ -55,6 +56,11 @@ def main():
                 answer = getanswer(ind,answers)
                 if '()' in answer:
                     exec(answer)
+                elif 'Update' in answer:
+                    upt = True
+                    input('Press Enter To Continue....')
+                    os.system('clear')
+                    break
                 else:
                     print(f"Zain:{getanswer(ind,answers)}")
                 
@@ -138,6 +144,8 @@ def main():
                         Update()
                     else:
                         print('bad choose.')
+    if upt:
+        Update()
 if __name__ == '__main__':
     main()
     
