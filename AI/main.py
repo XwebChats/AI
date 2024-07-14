@@ -54,7 +54,7 @@ def main():
                 ind = getanswerindex(prompt,questions)
                 answer = getanswer(ind,answers)
                 if '()' in answer:
-                    eval(answer)
+                    exec(answer)
                 else:
                     print(f"Zain:{getanswer(ind,answers)}")
                 
