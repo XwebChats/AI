@@ -130,7 +130,7 @@ def main():
                                 func.append(step[z])
                             fil.writelines(func)
                             writer.writerow([newQ,f"{newQ}()"])
-                            #Update()       
+                            #Update()    
                     elif prompt == 2:
                         ment = input(str(newQ) + str(' means? '))
                         answers.append(ment)
