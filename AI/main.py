@@ -132,7 +132,9 @@ def main():
                             writer.writerow([newQ,f"{newQ}()"])
                             #Update()       
                     elif prompt == 2:
-                        answers.append(input(str(newQ) + str(' means? ')))
+                        ment = input(str(newQ) + str(' means? '))
+                        answers.append(ment)
+                        writer.writerow([newQ,ment])
                     else:
                         print('bad choose.')
 if __name__ == '__main__':
