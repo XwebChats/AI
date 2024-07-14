@@ -25,6 +25,4 @@ def Update():
   exit(0)
 def Flask():
   import os
-  os.system('cd SRVR')
-  os.system('flask run')
-  os.system('cd ..')
+  os.system('python3 SRVR/gettern.py')
